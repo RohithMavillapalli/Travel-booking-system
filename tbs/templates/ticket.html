@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+<h2>TravelBuddy Flight Ticket</h2>
+
+<div style="border:2px solid black; padding:20px; width:400px">
+
+<p><b>Passenger:</b> {{ booking.passenger_name }}</p>
+
+<p><b>Age:</b> {{ booking.passenger_age }}</p>
+
+<p><b>Gender:</b> {{ booking.passenger_gender }}</p>
+
+<hr>
+
+<p><b>Flight:</b> {{ flight.flight_number }}</p>
+
+<p><b>Airline:</b> {{ flight.airline_name }}</p>
+
+<p><b>Route:</b> {{ flight.source }} → {{ flight.destination }}</p>
+
+<p><b>Departure:</b> {{ flight.departure_time }}</p>
+
+<p><b>Arrival:</b> {{ flight.arrival_time }}</p>
+
+<p><b>Status:</b> Confirmed</p>
+
+</div>
+</center>
+<br>
+{% endblock %}

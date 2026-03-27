@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+<h2>Add Flight</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input type="text" name="flight_number" placeholder="Flight Number"><br><br>
+
+<input type="text" name="airline_name" placeholder="Airline Name"><br><br>
+
+<input type="text" name="source" placeholder="Source"><br><br>
+
+<input type="text" name="destination" placeholder="Destination"><br><br>
+
+<input type="datetime-local" name="departure_time"><br><br>
+
+<input type="datetime-local" name="arrival_time"><br><br>
+
+<input type="number" name="price" placeholder="Price"><br><br>
+
+<input type="number" name="seats" placeholder="Seats"><br><br>
+
+<button type="submit">Add Flight</button>
+
+</form>
+</center>
+<br>
+{% endblock %}

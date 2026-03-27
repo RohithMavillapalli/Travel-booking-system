@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+<h2>Welcome {{ request.session.first_name }}</h2>
+
+<a href="/add-flight/">Add Flight</a>
+
+<br><br>
+
+<h3>Your Flights</h3>
+
+<table border="1">
+
+<tr>
+<th>Flight</th>
+<th>Source</th>
+<th>Destination</th>
+<th>Price</th>
+<th>Actions</th>
+</tr>
+
+{% for flight in flights %}
+
+<tr>
+
+<td>{{ flight.flight_number }}</td>
+<td>{{ flight.source }}</td>
+<td>{{ flight.destination }}</td>
+<td>{{ flight.price }}</td>
+
+<td>
+
+<a href="/edit-flight/{{ flight.flight_id }}/">Edit</a> |
+
+<a href="/delete-flight/{{ flight.flight_id }}/">Delete</a> |
+
+<a href="/flight-bookings/{{ flight.flight_id }}/">Bookings</a>
+
+</td>
+
+
+</tr>
+
+{% endfor %}
+
+</table>
+</center>
+<br>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+
+<center>
+<form method="GET">
+
+<input type="text" name="source" placeholder="Source">
+
+<input type="text" name="destination" placeholder="Destination">
+
+<button type="submit">Search</button>
+
+</form>
+
+<br><br>
+
+<h2>Available Flights</h2>
+
+<table border="1">
+
+
+<tr>
+<th>Flight</th>
+<th>Airline</th>
+<th>Source</th>
+<th>Destination</th>
+<th>Departure</th>
+<th>Price</th>
+<th>Seats</th>
+<th>Action</th>
+</tr>
+
+{% for flight in flights %}
+
+<tr>
+
+<td>{{ flight.flight_number }}</td>
+<td>{{ flight.airline_name }}</td>
+<td>{{ flight.source }}</td>
+<td>{{ flight.destination }}</td>
+<td>{{ flight.departure_time }}</td>
+<td>{{ flight.price }}</td>
+<td>{{ flight.seats }}</td>
+
+<td>
+<a href="/book-flight/{{ flight.flight_id }}/">Book</a>
+</td>
+
+</tr>
+
+</center>
+
+
+
+{% endfor %}
+
+</table>
+<br>
+<br>
+
+
+
+<br>
+
+{% endblock %}

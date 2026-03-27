@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<center>
+<h2>Welcome {{ request.session.first_name }}</h2>
+
+<div style="text-align:center; margin-top:20px;">
+
+<img src="{% static 'images/flights.jpg' %}" 
+     alt="Flight" 
+     style="width:600px; height:300px; border-radius:10px;">
+
+<br><br>
+<a href="/search-flights/">
+<button style="padding:10px 20px; font-size:16px;">
+Search Flights
+</button>
+</a>
+
+</div>
+<br>
+<a href="/my-bookings/"><button style="padding:10px 20px; font-size:16px;">My Bookings</button></a>
+</center>
+<br><br>
+{% endblock %}

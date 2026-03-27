@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+<h2>My Bookings</h2>
+
+<table border="1">
+
+<tr>
+<th>Flight</th>
+<th>Airline</th>
+<th>Route</th>
+<th>Departure</th>
+<th>Passenger</th>
+<th>Age</th>
+<th>Action</th>
+</tr>
+
+{% for item in booking_details %}
+
+<tr>
+
+<td>{{ item.flight.flight_number }}</td>
+
+<td>{{ item.flight.airline_name }}</td>
+
+<td>{{ item.flight.source }} → {{ item.flight.destination }}</td>
+
+<td>{{ item.flight.departure_time }}</td>
+
+<td>{{ item.booking.passenger_name }}</td>
+
+<td>{{ item.booking.passenger_age }}</td>
+
+<td>
+
+<a href="/ticket/{{ item.booking.booking_id }}/">View Ticket</a>
+
+|
+
+<a href="/cancel-booking/{{ item.booking.booking_id }}/">Cancel</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+</center>
+<br>
+{% endblock %}

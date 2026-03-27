@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TravelBuddy</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<header>
+
+<h1 class="logo">✈ TravelBuddy</h1>
+
+<nav>
+<ul>
+
+<li><a href="/">Home</a></li>
+<li><a href="/about/">About</a></li>
+<li><a href="/contact/">Contact</a></li>
+
+{% if request.session.user_id %}
+<li><a href="/update-profile/">Update Profile</a></li>
+<li><a href="/logout/">Logout</a></li>
+
+{% else %}
+
+<li><a href="/login/">Login</a></li>
+<li><a href="/register/">Register</a></li>
+{% endif %}
+</ul>
+</nav>
+
+</header>
+
+<main>
+
+{% block content %}
+
+{% endblock %}
+
+</main>
+
+<footer>
+
+<p>© 2026 TravelBuddy | Domestic Flight Booking</p>
+
+</footer>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>

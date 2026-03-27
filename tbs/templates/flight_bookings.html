@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+<h2>Flight Bookings</h2>
+
+<table border="1">
+
+<tr>
+<th>Passenger</th>
+<th>Age</th>
+<th>Gender</th>
+</tr>
+
+{% for booking in bookings %}
+
+<tr>
+
+<td>{{ booking.passenger_name }}</td>
+<td>{{ booking.passenger_age }}</td>
+<td>{{ booking.passenger_gender }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+</center>
+<br>
+{% endblock %}
