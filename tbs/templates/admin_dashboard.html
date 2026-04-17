@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelBuddy Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>✈️ TravelBuddy Admin Dashboard</h2>
+    <a href="{% url 'admin_logout' %}" class="btn btn-danger">Logout</a>
+</div>
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Total Users</h5>
+                <h2>{{ total_users }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Total Flights</h5>
+                <h2>{{ total_flights }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Total Bookings</h5>
+                <h2>{{ total_bookings }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Users Table -->
+    <h4>Recent Users</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.user_id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Flights Table -->
+    <h4>Recent Flights</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Flight Number</th>
+            <th>Source</th>
+            <th>Destination</th>
+        </tr>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight.flight_id }}</td>
+            <td>{{ flight.flight_number }}</td>
+            <td>{{ flight.source }}</td>
+            <td>{{ flight.destination }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Bookings Table -->
+    <h4>Recent Bookings</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Flight</th>
+            <th>Status</th>
+        </tr>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.booking_id }}</td>
+            <td>{{ booking.user_id.email }}</td>
+            <td>{{ booking.flight_id.flight_number }}</td>
+            <td>{{ booking.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+<p>Total users loaded: {{ users|length }}</p>
+<p>Total flights loaded: {{ flights|length }}</p>
+<p>Total bookings loaded: {{ bookings|length }}</p>
+</body>
+</html>

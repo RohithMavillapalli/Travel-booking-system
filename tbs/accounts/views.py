@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect
-from .models import User
+from accounts.models import User
+from flights.models import Flight
+from bookings.models import Booking
 # Create your views here.
 def admin_users(request):
     users = User.objects.all()
@@ -83,3 +85,36 @@ def update_profile(request):
 
     return render(request, "update_profile.html", {"user": user})
 
+#admin dashboard
+def admin_dashboard(request):
+    total_users = User.objects.count()
+    total_flights = Flight.objects.count()
+    total_bookings = Booking.objects.count()
+
+    users = User.objects.all()[:5]
+    flights = Flight.objects.all()[:5]
+    bookings = Booking.objects.all()[:5]
+
+    context = {
+        'total_users': total_users,
+        'total_flights': total_flights,
+        'total_bookings': total_bookings,
+        'users': users,
+        'flights': flights,
+        'bookings': bookings,
+    }
+
+    return render(request, 'admin_dashboard.html', context)
+
+def admin_logout(request):
+    # remove custom session values
+    if 'user_id' in request.session:
+        del request.session['user_id']
+
+    if 'role' in request.session:
+        del request.session['role']
+
+    # optional: clear everything
+    request.session.flush()
+
+    return redirect('home')
